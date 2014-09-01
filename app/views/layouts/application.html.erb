@@ -2,21 +2,40 @@
 <html>
 <head>
   <title>TestProject</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'test_error', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
+
+  <% if user_signed_in? %>
+    <div class="col-lg-offset-7">
+      Signed in as <%= current_user.email %>.<br /> Not you?
+    </div>
+    <div class="col-lg-offset-9">
+      <% if session[:fb_token].nil? %>
+          <%= link_to "Sign out", destroy_user_session_path , :method => :delete %>
+      <% else %>
+          <%= link_to "Sign out", facebook_logout_path %>
+      <% end %>
+    </div>
+  <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+      <%= link_to "Sign Up", new_user_registration_path %>
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+  <% end %>
+</div>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <%= yield %>
 
-<% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. This cannot be cheese?
-    <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
-<% end %>
+
 
 </body>
 </html>
+
+

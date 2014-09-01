@@ -29,6 +29,18 @@ gem 'spring',        group: :development
 
 gem 'devise', '~> 3.0.0.rc'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+gem "public_activity"
+
+gem 'cancan'
+
+gem "paperclip"
+#gem 'role_model'
+#gem 'ruby-debug'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

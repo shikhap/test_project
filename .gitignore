@@ -14,4 +14,15 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+.idea/*.*
+.idea/.name
+.idea/.rakeTasks
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/test_project.iml
+.idea/vcs.xml
+.idea/workspace.xml
+
 

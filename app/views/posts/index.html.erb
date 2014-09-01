@@ -1,0 +1,43 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+        Listing posts
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th colspan="4"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @posts.each do |post| %>
+
+              <tr>
+                <td><%= post.title %></td>
+                <td><%= post.description %></td>
+                <% if can? :update, post %>
+                <td><%= link_to 'Show', post %></td>
+                <% end %>
+                <td><%= link_to 'Comments', post_comments_path(post) %></td>
+                <% if can? :update, post %>
+                    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+                <%end%>
+                <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    <br>
+
+    <%= link_to 'New Post', new_post_path %>
+  </div>
+</div>

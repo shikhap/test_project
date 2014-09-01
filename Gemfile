@@ -36,7 +36,7 @@ gem "public_activity"
 
 gem 'cancan'
 
-gem "paperclip"
+#gem "paperclip"
 #gem 'role_model'
 #gem 'ruby-debug'
 
